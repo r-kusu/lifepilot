@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LifePilot アプリ｜今日やることを整理</title>
+<meta name="description" content="LifePilotのWebアプリ。結婚・引越し・出産・車などのイベントから、今日やることを整理します。">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#6657f5">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg">
+<style>
+:root{--bg:#f4f5f8;--card:#fff;--ink:#1c2030;--muted:#7b8294;--line:#e7e9ef;--accent:#6657f5;--accentSoft:#ece9ff;--mint:#dff8ef;--mintInk:#16795b;--sun:#fff2cc;--sunInk:#906500;--rose:#ffe6ec;--roseInk:#a83f57;--shadow:0 14px 38px rgba(36,40,60,.08)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#fbfbfd,#f3f4f7 45%);font-family:Inter,"Noto Sans JP",system-ui,-apple-system,sans-serif;color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.shell{min-height:100vh;max-width:1120px;margin:auto;padding:0 18px 98px}.top{height:78px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:10px;align-items:center;font-weight:950;font-size:23px;letter-spacing:-.03em}.mark{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,#6657f5,#9f8fff);display:grid;place-items:center;color:#fff}.topActions{display:flex;gap:8px;align-items:center}.btn{border:0;border-radius:14px;padding:11px 14px;font-weight:850;background:#fff;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink)}.btn.primary{background:var(--accent);color:#fff;box-shadow:none}.btn.soft{background:var(--accentSoft);color:#5b45dc}.btn.small{padding:8px 10px;border-radius:11px;font-size:12px}
+.hero{display:grid;grid-template-columns:1.18fr .82fr;gap:18px}.panel{background:#fff;border:1px solid var(--line);border-radius:27px;box-shadow:var(--shadow)}.welcome{padding:25px;background:radial-gradient(circle at 84% 16%,#dfd8ff 0,transparent 29%),linear-gradient(140deg,#fff,#faf9ff)}.eyebrow{font-size:11px;font-weight:900;letter-spacing:.15em;color:#8a7fa3}.welcome h1{font-size:35px;letter-spacing:-.045em;line-height:1.15;margin:7px 0 8px}.sub{color:var(--muted);font-size:13px;line-height:1.7}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.chip{padding:8px 10px;border-radius:999px;font-size:12px;font-weight:850;background:#f2f1f6}
+.progress{padding:23px;background:linear-gradient(160deg,#1f2231,#313446);color:#fff;display:grid;place-items:center}.ring{--p:0%;width:110px;height:110px;border-radius:50%;background:conic-gradient(#9d8dff var(--p),#ffffff20 0);display:grid;place-items:center;position:relative}.ring:after{content:"";position:absolute;width:84px;height:84px;border-radius:50%;background:#292c3c}.ring span{position:relative;z-index:1;font-size:25px;font-weight:950}.progressText{color:#cfd3df;text-align:center;font-size:12px;margin-top:10px;line-height:1.6}
+.grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-top:18px}.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:19px;box-shadow:0 8px 24px rgba(36,40,54,.04)}.cardhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.card h2{font-size:17px;margin:0}.task{display:grid;grid-template-columns:38px minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.task:last-child{border-bottom:0}.check{width:32px;height:32px;border-radius:11px;border:1px solid #dfe2e9;background:#fff;font-weight:900}.check.done{background:var(--mint);color:var(--mintInk);border-color:#c7eadc}.tasktitle{font-size:14px;font-weight:850}.meta{font-size:11px;color:var(--muted);margin-top:4px}.badge{font-size:10px;padding:5px 8px;border-radius:999px;font-weight:900;white-space:nowrap}.today{background:var(--rose);color:var(--roseInk)}.week{background:var(--sun);color:var(--sunInk)}.later{background:#eef0f5;color:#687184}.doneb{background:var(--mint);color:var(--mintInk)}
+.event{padding:15px;border-radius:18px;background:#fafafe;border:1px solid var(--line);margin-bottom:10px}.eventTop{display:flex;align-items:center;justify-content:space-between;gap:10px}.eventLeft{display:flex;gap:10px;align-items:center}.eventIcon{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:var(--accentSoft);font-size:18px}.eventTitle{font-weight:900;font-size:14px}.eventMeta{font-size:11px;color:var(--muted);margin-top:4px}
+.page{display:none}.page.active{display:block}.sectionTitle{display:flex;justify-content:space-between;align-items:end;margin:3px 0 15px}.sectionTitle h1{font-size:28px;letter-spacing:-.035em;margin:0}.filters{display:flex;gap:7px;overflow:auto;padding-bottom:5px}.filter{border:0;padding:8px 11px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:12px;font-weight:850;white-space:nowrap}.filter.on{background:var(--ink);color:#fff}.field{border:1px solid #dfe2e9;background:#fff;border-radius:14px;padding:12px 13px;width:100%;outline:none}.field:focus{border-color:#9a89ff;box-shadow:0 0 0 4px #ede9ff}.stack{display:grid;gap:10px}.quick{display:grid;grid-template-columns:1fr auto;gap:8px}.empty{padding:25px;text-align:center;border:1px dashed #d7dae3;border-radius:18px;color:var(--muted);background:#fafbfc}.empty b{display:block;color:var(--ink);margin-bottom:6px}.zeroCta{margin-top:11px}.note{background:#f7f5ff;border:1px solid #e8e2ff;padding:14px;border-radius:16px;font-size:12px;color:#685f84;line-height:1.7}
+.bottomnav{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(560px,calc(100% - 24px));padding:8px;background:#1e2230e8;backdrop-filter:blur(16px);border-radius:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:5px;z-index:20;box-shadow:0 18px 40px rgba(0,0,0,.22)}.nav{border:0;background:transparent;color:#aeb3c2;padding:9px 3px;border-radius:14px;font-size:11px;font-weight:800}.nav.on{background:#ffffff14;color:#fff}.nav b{display:block;font-size:17px;margin-bottom:3px}
+.modalWrap{position:fixed;inset:0;background:#15182ba3;display:grid;place-items:center;padding:18px;z-index:30}.modal{width:min(560px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:28px;padding:23px;box-shadow:0 30px 80px #0004}.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.choice{padding:15px;border:1px solid var(--line);border-radius:17px;background:#fff;text-align:left}.choice.on{border-color:#8f7fff;background:#f5f2ff}.choice b{display:block;font-size:14px}.choice span{font-size:11px;color:var(--muted)}.modalActions{display:flex;justify-content:flex-end;gap:8px;margin-top:17px}.toast{position:fixed;top:18px;left:50%;transform:translateX(-50%);background:#1e2230;color:#fff;padding:11px 15px;border-radius:13px;font-size:12px;z-index:40}
+.danger{color:#b73e55}.settingsGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:780px){.shell{padding:0 14px 96px}.top{height:68px}.brand{font-size:21px}.hero,.grid,.settingsGrid{grid-template-columns:1fr}.welcome h1{font-size:29px}.progress{grid-template-columns:auto 1fr;gap:15px;place-items:center start}.ring{width:88px;height:88px}.ring:after{width:68px;height:68px}.progressText{text-align:left;margin:0}.choices{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+<a class="brand" href="/"><span class="mark">L</span>LifePilot</a>
+<div class="topActions"><button id="installBtn" class="btn small soft hidden">ホーム画面に追加</button><button id="newEventTop" class="btn small primary">＋ イベント</button></div>
+</header>
+
+<section id="homePage" class="page active">
+<div class="hero">
+<div class="panel welcome"><div class="eyebrow">TODAY</div><h1><span id="helloName">あなた</span>の<br>今日やること。</h1><div id="heroText" class="sub">イベントを追加すると、次にやることを整理します。</div><div class="chips"><span id="todayChip" class="chip">今日 0件</span><span id="weekChip" class="chip">今週 0件</span><span id="eventChip" class="chip">イベント 0件</span></div></div>
+<div class="panel progress"><div class="ring" id="ring"><span id="progressPct">0%</span></div><div><div style="font-weight:900;font-size:17px">今の進み具合</div><div id="progressText" class="progressText">イベントを追加すると進捗が表示されます。</div></div></div>
+</div>
+<div class="grid">
+<div class="card"><div class="cardhead"><div><div class="eyebrow">NEXT ACTION</div><h2>今やること</h2></div><button class="btn small" data-go="tasks">すべて見る</button></div><div id="homeTasks"></div></div>
+<div class="card"><div class="cardhead"><div><div class="eyebrow">LIFE EVENTS</div><h2>進行中</h2></div></div><div id="homeEvents"></div></div>
+</div>
+</section>
+
+<section id="tasksPage" class="page">
+<div class="sectionTitle"><div><div class="eyebrow">LIFE INBOX</div><h1>やること</h1></div></div>
+<div class="filters"><button class="filter on" data-filter="all">すべて</button><button class="filter" data-filter="today">今日</button><button class="filter" data-filter="week">今週</button><button class="filter" data-filter="later">あとで</button><button class="filter" data-filter="done">完了</button></div>
+<div class="card" style="margin-top:12px"><div id="allTasks"></div></div>
+<div class="card" style="margin-top:14px"><div class="cardhead"><h2>自分で追加</h2></div><div class="quick"><input id="quickTask" class="field" placeholder="例：不動産会社へ連絡"><button id="addTask" class="btn primary">追加</button></div></div>
+</section>
+
+<section id="eventsPage" class="page">
+<div class="sectionTitle"><div><div class="eyebrow">LIFE EVENTS</div><h1>人生イベント</h1></div><button id="newEventPage" class="btn primary">＋ 追加</button></div>
+<div id="eventsList" class="card"></div>
+</section>
+
+<section id="settingsPage" class="page">
+<div class="sectionTitle"><div><div class="eyebrow">SETTINGS</div><h1>設定</h1></div></div>
+<div class="settingsGrid">
+<div class="card"><div class="stack"><label><div class="sub">表示名</div><input id="displayName" class="field" placeholder="例：たろう"></label><label><div class="sub">世帯名 / チーム名</div><input id="householdName" class="field" placeholder="例：たろう・はなこ家"></label><button id="saveProfile" class="btn primary">保存</button></div></div>
+<div class="card"><h2>データ</h2><p class="sub">現在のベータ版では、このブラウザ内に保存します。別端末との同期はまだ行いません。</p><div class="stack"><button id="exportBtn" class="btn">バックアップを書き出す</button><label class="btn" style="text-align:center">バックアップを読み込む<input id="importFile" type="file" accept="application/json" class="hidden"></label><button id="resetBtn" class="btn danger">この端末のデータを初期化</button></div></div>
+</div>
+<div class="note" style="margin-top:14px">LifePilotは整理支援ツールです。行政・契約・保険など重要な手続きの要件や期限は、必ず各機関の公式情報を確認してください。</div>
+</section>
+
+<nav class="bottomnav">
+<button class="nav on" data-nav="home"><b>⌂</b>ホーム</button>
+<button class="nav" data-nav="tasks"><b>✓</b>やること</button>
+<button class="nav" data-nav="events"><b>◇</b>イベント</button>
+<button class="nav" data-nav="settings"><b>○</b>設定</button>
+</nav>
+</div>
+
+<div id="eventModal" class="modalWrap hidden">
+<div class="modal">
+<div class="eyebrow">NEW LIFE EVENT</div><h2 style="font-size:24px;margin:6px 0">何が始まりますか？</h2><p class="sub">イベントと日付を選ぶと、最初のタスクをまとめて追加します。</p>
+<div class="choices">
+<button class="choice on" data-type="marriage"><b>💍 結婚</b><span>変更・連絡・契約確認</span></button>
+<button class="choice" data-type="moving"><b>📦 引越し</b><span>住まい・ライフライン・住所</span></button>
+<button class="choice" data-type="birth"><b>🍼 出産</b><span>準備・連絡・手続き確認</span></button>
+<button class="choice" data-type="car"><b>🚗 車</b><span>購入・保険・期限管理</span></button>
+</div>
+<div class="stack" style="margin-top:14px"><label><div class="sub">基準日</div><input id="eventDate" class="field" type="date"></label><input id="eventTitle" class="field" placeholder="イベント名（任意）"></div>
+<div class="modalActions"><button id="closeModal" class="btn">閉じる</button><button id="createEvent" class="btn primary">このイベントを始める</button></div>
+</div>
+</div>
+<div id="toast" class="toast hidden"></div>
+
+<script>
+(function(){
+'use strict';
+var KEY='lifepilot_v2';
+var data={profile:{displayName:'',householdName:''},events:[],tasks:[]};
+var filter='all',selectedType='marriage',deferredPrompt=null;
+var labels={marriage:'結婚',moving:'引越し',birth:'出産',car:'車'};
+var icons={marriage:'💍',moving:'📦',birth:'🍼',car:'🚗'};
+var templates={
+marriage:[
+['婚姻に必要な書類を確認','手続き',-14,1],['婚姻届の提出準備','手続き',-3,1],['勤務先への変更連絡','仕事',2,2],['本人確認書類の変更要否を確認','変更',3,1],['銀行口座の名義変更要否を確認','お金',7,2],['クレジットカード情報の変更要否を確認','お金',10,2],['携帯・各種契約の名義を確認','契約',14,2],['保険・サブスク等の契約情報を確認','契約',21,3]
+],
+moving:[
+['退去・入居日を確定','住まい',-30,1],['引越し業者・移動手段を決める','引越し',-21,1],['電気・ガス・水道の手続きを確認','ライフライン',-10,1],['インターネット移転を確認','通信',-10,2],['郵便物の転送を確認','住所',-7,2],['住所変更が必要な契約を洗い出す','住所',1,1],['勤務先へ住所変更を連絡','仕事',3,2],['車・保険など住所情報を確認','契約',7,2]
+],
+birth:[
+['必要な持ち物・準備品を整理','準備',-60,2],['出産前後の連絡先を整理','家族',-30,2],['仕事の休暇・手続きを確認','仕事',-30,1],['出産後の届出項目を確認','手続き',1,1],['保険・医療関連の手続きを確認','手続き',5,1],['育児用品の不足を確認','準備',7,2]
+],
+car:[
+['予算と維持費を整理','お金',-30,2],['任意保険を比較・確認','保険',-14,1],['納車日に必要なものを確認','購入',-3,1],['駐車場・保管場所を確認','生活',-10,2],['点検・車検の予定を登録','期限',30,2],['保険更新日を登録','期限',30,2]
+]};
+function $(id){return document.getElementById(id)}
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]})}
+function uid(){return (crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2))}
+function todayISO(){var d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+function parseLocal(s){if(!s)return null;var p=s.split('-').map(Number);return new Date(p[0],p[1]-1,p[2],12)}
+function addDays(s,n){var d=parseLocal(s)||new Date();d.setDate(d.getDate()+n);return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+function diffDays(s){if(!s)return 9999;var a=parseLocal(todayISO()),b=parseLocal(s);return Math.round((b-a)/86400000)}
+function bucket(t){if(t.status==='done')return'done';var d=diffDays(t.dueDate);if(d<=0)return'today';if(d<=7)return'week';return'later'}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function load(){try{var raw=localStorage.getItem(KEY);if(raw){var parsed=JSON.parse(raw);if(parsed&&parsed.profile&&Array.isArray(parsed.events)&&Array.isArray(parsed.tasks))data=parsed}}catch(e){}render()}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');setTimeout(function(){$('toast').classList.add('hidden')},1700)}
+function badge(t){var b=bucket(t),map={today:['今日','today'],week:['今週','week'],later:['あとで','later'],done:['完了','doneb']};return '<span class="badge '+map[b][1]+'">'+map[b][0]+'</span>'}
+function taskHtml(t){return '<div class="task"><button class="check '+(t.status==='done'?'done':'')+'" data-check="'+t.id+'" aria-label="完了切替">'+(t.status==='done'?'✓':'')+'</button><div><div class="tasktitle">'+esc(t.title)+'</div><div class="meta">'+esc(t.category||'その他')+(t.dueDate?' · '+esc(t.dueDate):'')+'</div></div>'+badge(t)+'</div>'}
+function eventHtml(e){var related=data.tasks.filter(function(t){return t.eventId===e.id}),done=related.filter(function(t){return t.status==='done'}).length,p=related.length?Math.round(done/related.length*100):0;return '<div class="event"><div class="eventTop"><div class="eventLeft"><div class="eventIcon">'+icons[e.type]+'</div><div><div class="eventTitle">'+esc(e.title)+'</div><div class="eventMeta">'+esc(e.date||'日付未設定')+' · '+p+'% 完了</div></div></div><span class="badge '+(p===100?'doneb':'week')+'">'+done+'/'+related.length+'</span></div></div>'}
+function bindChecks(){document.querySelectorAll('[data-check]').forEach(function(btn){btn.onclick=function(){var t=data.tasks.find(function(x){return x.id===btn.dataset.check});if(!t)return;t.status=t.status==='done'?'todo':'done';save();toast(t.status==='done'?'完了しました':'未完了に戻しました')}})}
+function render(){
+var name=data.profile.displayName||'あなた';$('helloName').textContent=name;
+var active=data.tasks.filter(function(t){return t.status!=='done'}),done=data.tasks.length-active.length,pct=data.tasks.length?Math.round(done/data.tasks.length*100):0;
+$('ring').style.setProperty('--p',pct+'%');$('progressPct').textContent=pct+'%';$('progressText').textContent=data.tasks.length?done+' / '+data.tasks.length+' 件完了':'イベントを追加すると進捗が表示されます。';
+$('todayChip').textContent='今日 '+active.filter(function(t){return bucket(t)==='today'}).length+'件';
+$('weekChip').textContent='今週 '+active.filter(function(t){return bucket(t)==='week'}).length+'件';
+$('eventChip').textContent='イベント '+data.events.length+'件';
+$('heroText').textContent=active.length?'いちばん近いタスクから片付けましょう。':'イベントを追加すると、必要なタスクを整理します。';
+var next=active.slice().sort(function(a,b){return (a.dueDate||'9999').localeCompare(b.dueDate||'9999')}).slice(0,6);
+$('homeTasks').innerHTML=next.length?next.map(taskHtml).join(''):'<div class="empty"><b>今すぐやることはありません</b>イベントを追加すると、次の行動がここに並びます。<div class="zeroCta"><button class="btn primary" data-empty-add>イベントを追加</button></div></div>';
+$('homeEvents').innerHTML=data.events.length?data.events.slice(0,4).map(eventHtml).join(''):'<div class="empty"><b>イベントはまだありません</b>まずは結婚・引越しなどを登録してみましょう。</div>';
+$('eventsList').innerHTML=data.events.length?data.events.map(eventHtml).join(''):'<div class="empty"><b>人生イベントはまだありません</b>「＋追加」から始められます。</div>';
+var list=data.tasks;if(filter!=='all')list=data.tasks.filter(function(t){return bucket(t)===filter});
+$('allTasks').innerHTML=list.length?list.map(taskHtml).join(''):'<div class="empty"><b>この条件のタスクはありません</b>表示条件を変えるか、新しいタスクを追加してください。</div>';
+$('displayName').value=data.profile.displayName||'';$('householdName').value=data.profile.householdName||'';
+bindChecks();
+document.querySelectorAll('[data-empty-add]').forEach(function(b){b.onclick=openEvent});
+}
+function openEvent(){selectedType='marriage';document.querySelectorAll('.choice').forEach(function(c){c.classList.toggle('on',c.dataset.type==='marriage')});$('eventDate').value=todayISO();$('eventTitle').value='';$('eventModal').classList.remove('hidden')}
+function closeEvent(){$('eventModal').classList.add('hidden')}
+function go(page){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});$(page+'Page').classList.add('active');document.querySelectorAll('[data-nav]').forEach(function(n){n.classList.toggle('on',n.dataset.nav===page)});scrollTo({top:0,behavior:'smooth'})}
+$('newEventTop').onclick=openEvent;$('newEventPage').onclick=openEvent;$('closeModal').onclick=closeEvent;
+$('eventModal').addEventListener('click',function(e){if(e.target===$('eventModal'))closeEvent()});
+document.querySelectorAll('.choice').forEach(function(c){c.onclick=function(){selectedType=c.dataset.type;document.querySelectorAll('.choice').forEach(function(x){x.classList.toggle('on',x===c)})}});
+$('createEvent').onclick=function(){var date=$('eventDate').value||todayISO(),e={id:uid(),type:selectedType,title:$('eventTitle').value.trim()||labels[selectedType],date:date};data.events.unshift(e);templates[selectedType].forEach(function(row){data.tasks.push({id:uid(),eventId:e.id,title:row[0],category:row[1],dueDate:addDays(date,row[2]),priority:row[3],status:'todo'})});closeEvent();save();toast('イベントを追加しました')};
+$('addTask').onclick=function(){var title=$('quickTask').value.trim();if(!title)return;data.tasks.push({id:uid(),eventId:null,title:title,category:'自分で追加',dueDate:null,priority:2,status:'todo'});$('quickTask').value='';save();toast('タスクを追加しました')};
+$('quickTask').addEventListener('keydown',function(e){if(e.key==='Enter')$('addTask').click()});
+$('saveProfile').onclick=function(){data.profile.displayName=$('displayName').value.trim();data.profile.householdName=$('householdName').value.trim();save();toast('保存しました')};
+$('exportBtn').onclick=function(){var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='lifepilot-backup-'+todayISO()+'.json';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)};
+$('importFile').onchange=function(e){var file=e.target.files&&e.target.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(){try{var parsed=JSON.parse(reader.result);if(!parsed.profile||!Array.isArray(parsed.events)||!Array.isArray(parsed.tasks))throw new Error('format');data=parsed;save();toast('バックアップを読み込みました')}catch(err){alert('LifePilotのバックアップファイルを確認してください。')}};reader.readAsText(file)};
+$('resetBtn').onclick=function(){if(confirm('この端末のLifePilotデータをすべて初期化しますか？')){localStorage.removeItem(KEY);data={profile:{displayName:'',householdName:''},events:[],tasks:[]};render();toast('初期化しました')}};
+document.querySelectorAll('[data-nav]').forEach(function(n){n.onclick=function(){go(n.dataset.nav)}});
+document.querySelectorAll('[data-go]').forEach(function(n){n.onclick=function(){go(n.dataset.go)}});
+document.querySelectorAll('[data-filter]').forEach(function(b){b.onclick=function(){filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(function(x){x.classList.toggle('on',x===b)});render()}});
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;$('installBtn').classList.remove('hidden')});
+$('installBtn').onclick=async function(){if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$('installBtn').classList.add('hidden')};
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}
+load();
+})();
+</script>
+</body></html>
