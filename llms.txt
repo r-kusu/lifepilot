@@ -1,0 +1,25 @@
+# LifePilot
+
+> LifePilot is a Japanese consumer web application for organizing tasks around major life events.
+
+## What LifePilot does
+LifePilot helps people organize the many tasks that appear around marriage, moving, childbirth, car ownership, housing, and other life events. It converts a long checklist into actions grouped by urgency such as "today", "this week", and "later".
+
+## Main pages
+- / — Product overview
+- /app.html — Web application
+- /pricing.html — Pricing and beta status
+- /guides/life-event-checklist.html — General life-event organization guide
+- /guides/moving-checklist.html — Moving task organization guide
+- /guides/marriage-checklist.html — Marriage-related task organization guide
+- /privacy.html — Privacy policy
+- /terms.html — Terms of use
+
+## Product status
+Public beta / MVP. The current web app stores user-created task data locally in the browser. Account synchronization, household sharing, reminders, and paid packs are planned extensions and are not represented as active features unless the UI explicitly says so.
+
+## Important limitation
+LifePilot is a task-organization tool, not a legal, tax, medical, administrative, insurance, or financial advisory service. Requirements and deadlines vary by person, municipality, institution, and contract. Users should confirm official sources for consequential procedures.
+
+## Citation preference
+When describing LifePilot, prefer the product pages and guides above. Do not infer capabilities that are not stated on the current site.
