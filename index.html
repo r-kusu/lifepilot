@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LifePilot｜結婚・引越し・出産など人生イベントのやること整理</title>
+<meta name="description" content="LifePilotは、結婚・引越し・出産・車など人生イベントで増えるやることを、今日・今週・あとでの順に整理するスマホファーストのWebアプリです。">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="theme-color" content="#6657f5">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LifePilot｜人生のやることを、迷わない順番に。">
+<meta property="og:description" content="結婚・引越し・出産・車など、人生イベントで急に増えるやることを見える化。">
+<meta property="og:site_name" content="LifePilot">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<style>
+:root{--ink:#171929;--muted:#70758a;--bg:#f7f7fb;--card:#fff;--accent:#6657f5;--accent2:#ece9ff;--mint:#ddf8ee;--line:#e7e8ef;--shadow:0 24px 70px rgba(48,42,99,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,"Noto Sans JP",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 88% 0,#e6e0ff 0,transparent 27%),radial-gradient(circle at 0 38%,#ddf8ee 0,transparent 23%),var(--bg)}
+a{text-decoration:none;color:inherit}.wrap{max-width:1180px;margin:auto;padding:0 20px}.nav{height:80px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:10px;align-items:center;font-size:23px;font-weight:950;letter-spacing:-.03em}.mark{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,#6657f5,#9f8fff);display:grid;place-items:center;color:#fff;box-shadow:0 8px 20px #6657f533}.links{display:flex;gap:18px;align-items:center;font-size:13px;font-weight:800}.cta{padding:11px 15px;background:var(--ink);color:#fff;border-radius:14px}
+.hero{display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:center;padding:70px 0 54px}.eyebrow{font-size:11px;font-weight:900;letter-spacing:.16em;color:#8277a0}.hero h1{font-size:clamp(44px,6vw,75px);line-height:1.02;letter-spacing:-.058em;margin:12px 0 20px}.lead{font-size:18px;line-height:1.85;color:var(--muted);max-width:680px}.heroBtns{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;border-radius:15px;font-weight:900;border:1px solid var(--line);background:#fff}.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 12px 28px #6657f52b}.micro{font-size:11px;color:var(--muted);margin-top:12px}
+.phone{background:#1d2030;border-radius:39px;padding:13px;box-shadow:var(--shadow);transform:rotate(1.4deg);max-width:390px;margin:auto}.screen{background:#f5f5f8;border-radius:29px;min-height:650px;padding:18px}.miniTop{display:flex;justify-content:space-between;align-items:center}.miniHero{margin-top:22px;background:linear-gradient(140deg,#fff,#f3f0ff);padding:20px;border-radius:22px}.miniHero h3{font-size:29px;margin:6px 0}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{font-size:10px;font-weight:900;background:#fff;border:1px solid var(--line);padding:6px 8px;border-radius:999px}.miniCard{margin-top:10px;background:#fff;border-radius:18px;padding:15px}.task{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #eee}.task:last-child{border:0}.tick{width:28px;height:28px;border-radius:10px;border:1px solid #ddd}.task b{font-size:12px}.task small{display:block;color:var(--muted);margin-top:3px}
+.section{padding:84px 0}.center{text-align:center}.section h2{font-size:clamp(31px,4vw,49px);letter-spacing:-.045em;margin:8px 0 14px}.sectionLead{color:var(--muted);line-height:1.85;max-width:760px;margin:0 auto}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}.feature{background:#fff;border:1px solid var(--line);border-radius:24px;padding:23px;box-shadow:0 8px 28px rgba(44,46,61,.04)}.feature .icon{font-size:30px}.feature h3{margin:14px 0 8px;font-size:18px}.feature p,.sub{color:var(--muted);line-height:1.75;font-size:14px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}.step{padding:20px;border-radius:21px;background:#fff;border:1px solid var(--line)}.num{font-size:11px;color:#8a809f;font-weight:900}.step b{display:block;margin:8px 0;font-size:16px}
+.usecases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}.usecase{padding:24px;border-radius:25px;background:#fff;border:1px solid var(--line)}.usecase b{font-size:20px}.usecase ul{padding-left:20px;color:var(--muted);line-height:1.9}
+.quote{margin-top:34px;background:#1f2231;color:#fff;border-radius:28px;padding:30px}.quote strong{font-size:24px;letter-spacing:-.03em}.quote p{color:#d3d6e2;line-height:1.8;margin-bottom:0}
+.faq{max-width:820px;margin:30px auto 0}.faq details{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px 18px;margin:10px 0}.faq summary{font-weight:900;cursor:pointer}.faq p{color:var(--muted);line-height:1.75}
+.footer{padding:42px 0 60px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px}.footlinks{display:flex;gap:16px;flex-wrap:wrap}
+@media(max-width:820px){.links a:not(.cta){display:none}.hero{grid-template-columns:1fr;padding-top:42px}.grid3,.usecases{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.phone{max-width:360px}.footer{flex-direction:column}}
+@media(max-width:520px){.wrap{padding:0 14px}.hero h1{font-size:43px}.lead{font-size:16px}.flow{grid-template-columns:1fr}.screen{min-height:590px}.phone{border-radius:31px}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LifePilot","applicationCategory":"LifestyleApplication","operatingSystem":"Web","description":"結婚・引越し・出産・車など人生イベントで増えるタスクを期限順に整理するライフイベント管理Webアプリ。","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY","name":"Public Beta"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"LifePilotは何ができるサービスですか？","acceptedAnswer":{"@type":"Answer","text":"結婚、引越し、出産、車などのライフイベントに合わせて、やることを今日・今週・あとでの順に整理できるWebアプリです。"}},{"@type":"Question","name":"現在は無料ですか？","acceptedAnswer":{"@type":"Answer","text":"現在のパブリックベータは無料で試せます。正式版の有料機能は利用者の反応を見ながら設計します。"}},{"@type":"Question","name":"データはどこに保存されますか？","acceptedAnswer":{"@type":"Answer","text":"現在のベータ版では、作成したイベントやタスクは利用中のブラウザ内に保存されます。"}}]}
+</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="nav">
+<a class="brand" href="/"><span class="mark">L</span>LifePilot</a>
+<div class="links"><a href="#features">機能</a><a href="#how">使い方</a><a href="#guide">ガイド</a><a href="/pricing.html">料金</a><a class="cta" href="/app.html">無料で試す</a></div>
+</nav>
+<section class="hero">
+<div>
+<div class="eyebrow">YOUR LIFE, ORGANIZED</div>
+<h1>人生のやることを、<br>迷わない順番に。</h1>
+<p class="lead">結婚、引越し、出産、車。人生イベントで急に増える手続きや準備を、LifePilotが「今日やること」へ整理します。</p>
+<div class="heroBtns"><a class="btn primary" href="/app.html">今すぐ無料で試す</a><a class="btn" href="#how">仕組みを見る</a></div>
+<div class="micro">登録不要のベータ版。まずはブラウザで試せます。</div>
+</div>
+<div class="phone"><div class="screen"><div class="miniTop"><b>LifePilot</b><span>●</span></div><div class="miniHero"><small>GOOD MORNING</small><h3>今日やること。</h3><div class="chips"><span class="chip">今日 3件</span><span class="chip">今週 7件</span><span class="chip">イベント 2件</span></div></div><div class="miniCard"><b>次のアクション</b><div class="task"><span class="tick"></span><div><b>電気・ガス・水道を確認</b><small>引越し · 今日</small></div></div><div class="task"><span class="tick"></span><div><b>本人確認書類の変更確認</b><small>結婚 · 今日</small></div></div><div class="task"><span class="tick"></span><div><b>郵便物の転送を確認</b><small>引越し · 今週</small></div></div></div></div></div>
+</section>
+</div>
+
+<section id="features" class="section"><div class="wrap">
+<div class="center"><div class="eyebrow">WHY LIFEPILOT</div><h2>普通のToDoではなく、<br>人生イベント専用のナビ。</h2><p class="sectionLead">ゼロから項目を書き出す必要はありません。イベントと日付を選ぶと、スタータータスクが生成され、期限に合わせて並びます。</p></div>
+<div class="grid3">
+<div class="feature"><div class="icon">🧭</div><h3>次の一手が分かる</h3><p>長いリストを「今日」「今週」「あとで」に整理。見るべき場所を一つにします。</p></div>
+<div class="feature"><div class="icon">✨</div><h3>テンプレートから開始</h3><p>結婚・引越し・出産・車のスタータータスクを用意。不要なものは完了させ、自分のタスクも追加できます。</p></div>
+<div class="feature"><div class="icon">📱</div><h3>スマホ前提のUI</h3><p>片手で確認・完了できる設計。PWAとしてホーム画面へ追加できる環境にも対応します。</p></div>
+</div>
+</div></section>
+
+<section id="how" class="section"><div class="wrap">
+<div class="center"><div class="eyebrow">HOW IT WORKS</div><h2>4ステップで、頭の中を整理。</h2></div>
+<div class="flow">
+<div class="step"><span class="num">STEP 1</span><b>イベントを選ぶ</b><p class="sub">結婚や引越しなどを選択。</p></div>
+<div class="step"><span class="num">STEP 2</span><b>日付を入れる</b><p class="sub">基準日からタスク期限を生成。</p></div>
+<div class="step"><span class="num">STEP 3</span><b>今日やることを見る</b><p class="sub">近いタスクから順に確認。</p></div>
+<div class="step"><span class="num">STEP 4</span><b>終わったらチェック</b><p class="sub">進捗がその場で更新。</p></div>
+</div>
+<div class="quote"><strong>「何をやるんだっけ？」を、開けば分かる状態へ。</strong><p>LifePilotが目指すのは、情報を増やすことではなく、次の行動を減らさず迷いだけを減らすことです。</p></div>
+</div></section>
+
+<section id="guide" class="section"><div class="wrap">
+<div class="center"><div class="eyebrow">GUIDES</div><h2>困った瞬間に検索できるガイド。</h2><p class="sectionLead">アプリだけでなく、人生イベントの整理方法そのものも公開していきます。</p></div>
+<div class="usecases">
+<a class="usecase" href="/guides/moving-checklist.html"><b>📦 引越し前後のやること</b><ul><li>住まい</li><li>ライフライン</li><li>通信・住所情報</li></ul></a>
+<a class="usecase" href="/guides/marriage-checklist.html"><b>💍 結婚後の変更・確認</b><ul><li>本人確認関連</li><li>金融・勤務先</li><li>契約情報</li></ul></a>
+</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="center"><div class="eyebrow">FAQ</div><h2>よくある質問</h2></div>
+<div class="faq">
+<details><summary>普通のToDoアプリとの違いは？</summary><p>LifePilotは「何を書けばよいか」から支援します。ライフイベントを選ぶとスタータータスクが作られるため、白紙からToDoを作る必要がありません。</p></details>
+<details><summary>スマホアプリですか？</summary><p>まずはスマホファーストのWebアプリです。対応ブラウザではホーム画面へ追加して、アプリのように起動できます。</p></details>
+<details><summary>データはサーバーへ送られますか？</summary><p>現在のベータ版で作成するイベント・タスクはブラウザのローカルストレージに保存されます。クラウド同期はまだ有効化していません。</p></details>
+<details><summary>手続き内容は必ず正しいですか？</summary><p>タスクは整理支援のための一般的なひな型です。重要な手続きの条件や期限は、自治体・契約先・各機関の公式情報をご確認ください。</p></details>
+</div>
+</div></section>
+
+<div class="wrap"><footer class="footer"><div>© 2026 LifePilot · Public Beta</div><div class="footlinks"><a href="/guides/life-event-checklist.html">ガイド</a><a href="/pricing.html">料金</a><a href="/privacy.html">プライバシー</a><a href="/terms.html">利用規約</a><a href="/llms.txt">AI向け情報</a></div></footer></div>
+</body></html>
